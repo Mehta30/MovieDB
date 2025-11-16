@@ -4,20 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/style.css">
+    <title>MovieDB</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 </head>
 
 <body>
-    <h1 id="title">MovieVerse</h1>
-    <div id="box">
-    <div id="Container">
-
-        <input type="text" id="user_input" class="input" placeholder="Enter the Movie Name">
-        <br>
-        <button id="btn" class="input">click me!!! </button>
-    </div>
-    </div>
+    <nav class="navbar">
+        <div class="logo-title">
+            <i class="bx bx-film"></i>
+            <h1 class="title">MovieDB</h1>
+        </div>
+        <input type="text" class="user-search" class="input" placeholder="Search media...">
+        
+        <ul class="nav-list">
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Shows</a></li>
+            <li><a href="#">Popular</a></li>
+        </ul>
+    </nav>
+        <!-- <button id="btn" class="input">click me!!! </button> -->
+    <section class="top-rated">
+    </section>
+    <section class="mov-list">
+    </section>
 
     <div id="Output_box">
         <p id="output"></p>
