@@ -1,9 +1,9 @@
 const apiKey = "acd969b8";
 const URL = "https://www.omdbapi.com/";
-const input = document.querySelector("#user_input");
-const button = document.querySelector("#btn");
+const input = document.querySelector(".user-search");
 let output = document.querySelector("#output");
 let movieName = "";
+const slider = document.querySelector('.mov-slider');
 
 function convertMinutesToHMS(minutes) {
   let totalSeconds = Math.floor(minutes * 60);
@@ -17,7 +17,8 @@ function convertMinutesToHMS(minutes) {
 }
 
 
-button.addEventListener("click", () => {
+input.addEventListener("keydown", (event) => {
+  if(event.key === "Enter"){
   movieName = input.value;
   fetch(`${URL}?apikey=${apiKey}&t=${movieName}`)
     .then(response => {
@@ -55,5 +56,10 @@ button.addEventListener("click", () => {
     .catch(error => {
       console.log("some error occur :(", error);
     })
+  }
+});
 
+slider.addEventListener('wheel', (event) => {
+    event.preventDefault(); 
+    slider.scrollLeft += event.deltaY;
 });

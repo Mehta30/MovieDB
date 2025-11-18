@@ -65,3 +65,52 @@ body{
 .nav-list a:hover{
     text-shadow: 1px 0 10px #FFFFFF;
 }
+
+.mov-slider{
+    display: flex;
+    overflow-x: auto;
+    gap: 32px;
+}
+
+.slide{
+    width: 350px;
+    height: 675px;
+    border-radius: 10px;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.slide .img-cont{
+    width: 100%;
+    aspect-ratio: 2/3;
+    background-image: url("https://dummyimage.com/500x750/802a80/fff");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.slide .text-cont{
+    flex: 1;
+    background-color: blue;
+    padding: 48px 16px 0 16px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.mov-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.mov-slider {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.top-rated{
+    padding: 0 64px;
+}
+
+.top-rated h2{
+    padding: 24px 0;
+}
