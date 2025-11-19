@@ -73,8 +73,8 @@ body{
 }
 
 .slide{
-    width: 350px;
-    height: 675px;
+    width: 255px;
+    aspect-ratio: 14/27;
     border-radius: 10px;
     display: flex;
     flex-shrink: 0;
@@ -93,7 +93,7 @@ body{
 .slide .text-cont{
     flex: 1;
     background-color: blue;
-    padding: 48px 16px 0 16px;
+    padding: 28px 16px 0 16px;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -113,4 +113,9 @@ body{
 
 .top-rated h2{
     padding: 24px 0;
+}
+
+.text-cont button{
+    margin-top: 5px;
+    margin-right: 10px;
 }

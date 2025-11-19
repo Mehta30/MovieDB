@@ -7,18 +7,46 @@ let output = document.querySelector("#output");
 let movieName = "";
 const slider = document.querySelector('.mov-slider');
 
-function getIMBD(movieName){
+function getGenreMovie(genreId) {
   return (async () => {
-      const res = await fetch(`${Ombd_URL}?apiKey=${Ombd_apiKey}&t=${movieName}`);
-      const rating = await res.json();
-      return rating.imdbRating;
+    const res = await fetch(`${Tmbd_URL}genre/movie/list?api_key=${Tmbd_apiKey}&language=en`);
+    const allgenreId = await res.json();
+    const size = allgenreId.genres.length
+    for (let i = 0; i < size; i++) {
+      if (allgenreId.genres[i].id === genreId) {
+        return allgenreId.genres[i].name
+      }
+    }
   })();
 }
-function getRuntime(id){
+
+function getGenreTv(genreId) {
+    return (async () => {
+    const res = await fetch(`${Tmbd_URL}genre/tv/list?api_key=${Tmbd_apiKey}&language=en`);
+    const allgenreId = await res.json();
+    const size = allgenreId.genres.length
+    for (let i = 0; i < size; i++) {
+      if (allgenreId.genres[i].id === genreId) {
+        return allgenreId.genres[i].name
+      }
+    }
+  })();
+
+}
+
+
+function getIMBD(movieName) {
+  return (async () => {
+    const res = await fetch(`${Ombd_URL}?apiKey=${Ombd_apiKey}&t=${movieName}`);
+    const rating = await res.json();
+    return rating.imdbRating;
+  })();
+}
+function getRuntime(id) {
   return (async () => {
     const res = await fetch(`${Tmbd_URL}movie/${id}?api_key=${Tmbd_apiKey}`);
-    const time=await res.json()
-    return time.runtime;    
+    const time = await res.json()
+    return time.runtime;
   })();
 }
 
@@ -39,25 +67,30 @@ function convertMinutesToHMS(minutes) {
   return `${hours}h ${mins}m`;
 }
 
+
 (async () => {
-  const res = await fetch(`${Tmbd_URL}discover/movie?api_key=${Tmbd_apiKey}&query=&sort_by=vote_average.desc&vote_count.gte=200&with_original_language=en`);
+  const res = await fetch(`${Tmbd_URL}discover/movie?api_key=${Tmbd_apiKey}&query=&sort_by=vote_average.desc&vote_count.gte=500&with_original_language=en`);
   const Top_movieData = await res.json()
   let i = 0;
   const slides = document.querySelectorAll(".mov-slider .slide");
   for (let slide of slides) {
     let img = slide.querySelector(".img-cont");
-    img.style.backgroundImage = `url(httpsz://image.tmdb.org/t/p/w500${Top_movieData.results[i].poster_path})`;
+    img.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${Top_movieData.results[i].poster_path})`;
     let top_movieName = slide.querySelector(".text-cont .mov-name");
     let top_movieInfo = slide.querySelector(".text-cont .info");
-    top_movieName.innerText = `${Top_movieData.results[i].title}`;
+    top_movieName.innerHTML = `<strong>${Top_movieData.results[i].title}</strong>`;
     const year = getYear(Top_movieData.results[i].release_date);
-    const Runtime= await getRuntime(Top_movieData.results[i].id);
-    const rating= await getIMBD(Top_movieData.results[i].title);
-    top_movieInfo.innerText = `${year} • ${convertMinutesToHMS(Runtime)} • ${rating}⭐`;
-    console.log(Top_movieData.results[i].title);
+    const Runtime = await getRuntime(Top_movieData.results[i].id);
+    const rating = await getIMBD(Top_movieData.results[i].title);
+    top_movieInfo.innerHTML = `<strong>${year} • ${convertMinutesToHMS(Runtime)} • ${rating}⭐</strong>`;
+
+    const buttons = slide.querySelectorAll('button');
+    for(let j=0;j<buttons.length;j++){
+      let genre= await getGenreMovie(Top_movieData.results[i].genre_ids[j]);
+      buttons[j].innerText = `${genre}`;
+    };
     i++;
   };
-
 })();
 
 
