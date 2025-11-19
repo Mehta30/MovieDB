@@ -46,7 +46,7 @@ function convertMinutesToHMS(minutes) {
   const slides = document.querySelectorAll(".mov-slider .slide");
   for (let slide of slides) {
     let img = slide.querySelector(".img-cont");
-    img.style.backgroundImage = `url(httpsz://image.tmdb.org/t/p/w500${Top_movieData.results[i].poster_path})`;
+    img.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${Top_movieData.results[i].poster_path})`;
     let top_movieName = slide.querySelector(".text-cont .mov-name");
     let top_movieInfo = slide.querySelector(".text-cont .info");
     top_movieName.innerText = `${Top_movieData.results[i].title}`;
