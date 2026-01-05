@@ -22,9 +22,54 @@ body{
     align-items: center;
     background-color: var(--secondary-color);
     padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
-.user-search{
+.spotlight-slide .img-cont{
+    position: relative;
+    display: inline-block;
+}
+
+.spotlight-slide .img-cont img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.spotlight-slide .img-cont::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0px 0px 90px 110px #09090B;
+    pointer-events: none;
+}
+
+.spotlight-box{
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.spotlight-slide .text-cont{
+    flex-grow: 1;
+    padding: 64px 0 0 64px;
+    font-size: 24px;
+}
+
+.spotlight-slide{
+    width: 100%;
+    display: flex;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+}
+
+/* .user-search{
     width: 30%;
     height: fit-content;
     margin: 0 auto 0 auto;
@@ -33,7 +78,54 @@ body{
     background-color: #27272A;
     color: #9F9FA9;
     border-radius: 8px;
+} */
+
+/* --- */
+
+.searchbar{
+    width: 400px;
+    height: 40px;
+    padding: 6px  100px 6px 15px;
 }
+
+.searchbar:focus{
+    outline: none;
+}
+
+.search-box:focus-within .srch-suggestions{
+    display: block;
+}
+
+.srch-suggestions{
+    display: none;
+    background-color: goldenrod;
+    width: 400px;
+    position: absolute;
+}
+
+.search-res{
+    background-color: blueviolet;
+}
+
+.entry-card{
+    display:flex;
+}
+
+.entry-card .text-cont{
+    overflow-x: hidden;
+}
+
+.entry-card .text-cont p{
+    width: max-content;
+}
+
+.entry-card img{
+    width: 50px;
+    height: 70px;
+    object-fit: cover;
+}
+
+/* --- */
 
 .nav-list{
     display: flex;
@@ -41,6 +133,8 @@ body{
     height: fit-content;
     gap: 30px;
     margin-right: 32px;
+    flex-grow: 1;
+    justify-content: end;
 }
 
 .logo-title{
@@ -113,4 +207,26 @@ body{
 
 .top-rated h2{
     padding: 24px 0;
+}
+
+.genre-bar{
+    width: max-content;
+    list-style-type: none;
+    gap: 16px;
+    border: 1px solid red;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.genre-filter{
+    cursor: pointer;
+    background: none;
+    color: var(--text-color);
+    border: none;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.genre-bar .active{
+    background-color: #F0B100;
 }

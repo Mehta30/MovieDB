@@ -1,131 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieDB</title>
-    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="assets/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-</head>
-
-<body>
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="logo-title">
-            <i class="bx bx-film"></i>
-            <h1 class="title">MovieDB</h1>
-        </div>
-        <input type="text" class="user-search" class="input" placeholder="Search media...">
-        
-        <ul class="nav-list">
-            <li><a href="#">Movies</a></li>
-            <li><a href="#">Shows</a></li>
-            <li><a href="#">Popular</a></li>
-        </ul>
+      <div class="logo-title">
+        <i class="bx bx-film"></i>
+        <h1 class="title">MovieDB</h1>
+      </div>
+      <!-- <input type="text" class="user-search" class="input" placeholder="Search media..."> -->
+
+      <div class="search-box">
+        <input class="searchbar" type="text" placeholder="Search media...">
+        <div class="srch-suggestions" tabindex="-1"></div>
+      </div>
+
+      <ul class="nav-list">
+        <li><a href="#">Movies</a></li>
+        <li><a href="#">Shows</a></li>
+        <li><a href="#">Popular</a></li>
+      </ul>
     </nav>
-        <!-- <button id="btn" class="input">click me!!! </button> -->
+    <!-- <button id="btn" class="input">click me!!! </button> -->
+    <div class="spotlight-box">
+    </div>
     <section class="top-rated">
-        <h2>Top Rated Movies</h2>
-        <div class="mov-slider">
-            <div class="slide slide1">
-                <div class="img-cont"></div>
-                <div class="text-cont">
-                    <p class="mov-name">Hello World</p>
-                    <p class="info">UTF 2025 UTF 180 min</p>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
-            <div class="slide slide2">
-                <div class="img-cont"></div>
-                <div class="text-cont">
-                    <p class="mov-name">Bye World</p>
-                    <p class="info">UTF 2025 UTF 180 min</p>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
-            <div class="slide slide3">
-                <div class="img-cont"></div>
-                <div class="text-cont">
-                    <p class="mov-name">My World</p>
-                    <p class="info">UTF 2025 UTF 180 min</p>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
-            <div class="slide slide4">
-                <div class="img-cont"></div>
-                <div class="text-cont">
-                    <p class="mov-name">Your World</p>
-                    <p class="info">UTF 2025 UTF 180 min</p>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
-            <div class="slide slide5">
-                <div class="img-cont"></div>
-                <div class="text-cont">
-                    <p class="mov-name">This World</p>
-                    <p class="info">UTF 2025 UTF 180 min</p>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
-            <div class="slide slide6">
-                <div class="img-cont"></div>
-                <div class="text-cont">
-                    <p class="mov-name">That World</p>
-                    <p class="info">UTF 2025 UTF 180 min</p>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
-            <div class="slide slide7">
-                <div class="img-cont"></div>
-                <div class="text-cont">
-                    <p class="mov-name">Hello World</p>
-                    <p class="info">UTF 2025 UTF 180 min</p>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
-            <div class="slide slide8">
-                <div class="img-cont"></div>
-                <div class="text-cont">
-                    <p class="mov-name">Hello World</p>
-                    <p class="info">UTF 2025 UTF 180 min</p>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
-            <div class="slide slide9">
-                <div class="img-cont"></div>
-                <div class="text-cont">
-                    <p class="mov-name">Hello World</p>
-                    <p class="info">UTF 2025 UTF 180 min</p>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
-            <div class="slide slide10">
-                <div class="img-cont"></div>
-                <div class="text-cont">
-                    <p class="mov-name">Hello World</p>
-                    <p class="info">UTF 2025 UTF 180 min</p>
-                    <button></button>
-                    <button></button>
-                </div>
-            </div>
+      <h2>Top Rated Movies</h2>
+      <div class="mov-slider">
+        <div class="slide slide1">
+          <div class="img-cont"></div>
+          <div class="text-cont">
+            <p class="mov-name">Hello World</p>
+            <p class="info">UTF 2025 UTF 180 min</p>
+            <button></button>
+            <button></button>
+          </div>
         </div>
+        <div class="slide slide2">
+          <div class="img-cont"></div>
+          <div class="text-cont">
+            <p class="mov-name">Bye World</p>
+            <p class="info">UTF 2025 UTF 180 min</p>
+            <button></button>
+            <button></button>
+          </div>
+        </div>
+        <div class="slide slide3">
+          <div class="img-cont"></div>
+          <div class="text-cont">
+            <p class="mov-name">My World</p>
+            <p class="info">UTF 2025 UTF 180 min</p>
+            <button></button>
+            <button></button>
+          </div>
+        </div>
+        <div class="slide slide4">
+          <div class="img-cont"></div>
+          <div class="text-cont">
+            <p class="mov-name">Your World</p>
+            <p class="info">UTF 2025 UTF 180 min</p>
+            <button></button>
+            <button></button>
+          </div>
+        </div>
+        <div class="slide slide5">
+          <div class="img-cont"></div>
+          <div class="text-cont">
+            <p class="mov-name">This World</p>
+            <p class="info">UTF 2025 UTF 180 min</p>
+            <button></button>
+            <button></button>
+          </div>
+        </div>
+        <div class="slide slide6">
+          <div class="img-cont"></div>
+          <div class="text-cont">
+            <p class="mov-name">That World</p>
+            <p class="info">UTF 2025 UTF 180 min</p>
+            <button></button>
+            <button></button>
+          </div>
+        </div>
+        <div class="slide slide7">
+          <div class="img-cont"></div>
+          <div class="text-cont">
+            <p class="mov-name">Hello World</p>
+            <p class="info">UTF 2025 UTF 180 min</p>
+            <button></button>
+            <button></button>
+          </div>
+        </div>
+        <div class="slide slide8">
+          <div class="img-cont"></div>
+          <div class="text-cont">
+            <p class="mov-name">Hello World</p>
+            <p class="info">UTF 2025 UTF 180 min</p>
+            <button></button>
+            <button></button>
+          </div>
+        </div>
+      </div>
     </section>
     <section class="mov-list">
+      <h2>All Movies</h2>
+      <!-- <ul class="genre-bar">
+        <li class="genre-filter active">All</li>
+        <li class="genre-filter">Action</li>
+        <li class="genre-filter">Adventure</li>
+        <li class="genre-filter">Comedy</li>
+        <li class="genre-filter">Crime</li>
+        <li class="genre-filter">Drama</li>
+        <li class="genre-filter">Horror</li>
+        <li class="genre-filter">Mystery</li>
+        <li class="genre-filter">Romance</li>
+        <li class="genre-filter">Sci-Fi</li>
+        <li class="genre-filter">Thriller</li>
+      </ul> -->
+      <div class="genre-bar">
+        <button class="genre-filter active">All</button>
+        <button class="genre-filter">Action</button>
+        <button class="genre-filter">Adventure</button>
+        <button class="genre-filter">Comedy</button>
+        <button class="genre-filter">Crime</button>
+        <button class="genre-filter">Drama</button>
+        <button class="genre-filter">Horror</button>
+        <button class="genre-filter">Mystery</button>
+        <button class="genre-filter">Romance</button>
+        <button class="genre-filter">Sci-Fi</button>
+        <button class="genre-filter">Thriller</button>
+      </div>
     </section>
-
-    <div id="Output_box">
-        <p id="output"></p>
-    </div>
-    <script src="./assets/script.js"></script>
-</body>
-
+    <script src="assets/script.js"></script>
+  </body>
 </html>
