@@ -186,7 +186,9 @@ body{
 
 .slide .text-cont{
     flex: 1;
-    background-color: blue;
+    background: transparent;
+    background-color: #1A1A2469;
+    backdrop-filter: blur(10px);
     padding: 48px 16px 0 16px;
 }
 
@@ -229,4 +231,36 @@ body{
 
 .genre-bar .active{
     background-color: #F0B100;
+}
+
+.spotlight-dots{
+    display: flex;
+    gap: 32px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.spotlight-dots .dot{
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.spotlight{
+    position: relative;
+}
+
+.genre-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.genre-box .slide{
+    width: 210px;
+    height: 405px;
+    border-radius: 10px;
 }

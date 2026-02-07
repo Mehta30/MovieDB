@@ -8,6 +8,8 @@ let resDiv = document.querySelector(".srch-suggestions");
 let output = document.querySelector(".spotlight-box");
 let movieName = "";
 const slider = document.querySelector('.mov-slider');
+const genreMap = {};
+let genreBox = document.querySelector('.genre-box');
 
 function getIMBD(movieName){
   return (async () => {
@@ -43,7 +45,12 @@ function convertMinutesToHMS(minutes) {
 
 (async () => {
   const res = await fetch(`${Tmdb_URL}discover/movie?api_key=${Tmdb_apiKey}&query=&sort_by=vote_average.desc&vote_count.gte=600&with_original_language=en`);
-  const Top_movieData = await res.json()
+  const Top_movieData = await res.json();
+  const genreData = await fetch(`${Tmdb_URL}genre/movie/list?api_key=${Tmdb_apiKey}&language=en'`)
+  .then(res => res.json());
+  for (genre of genreData.genres){
+    genreMap[genre.id] = genre.name;
+  }
   let i = 0;
   const slides = document.querySelectorAll(".mov-slider .slide");
   for (let slide of slides) {
@@ -56,7 +63,17 @@ function convertMinutesToHMS(minutes) {
     const Runtime= await getRuntime(Top_movieData.results[i].id);
     const rating= await getIMBD(Top_movieData.results[i].title);
     top_movieInfo.innerText = `${year} • ${convertMinutesToHMS(Runtime)} • ${rating}⭐`;
-    console.log(Top_movieData.results[i].title);
+    let currB = document.querySelector(`.slide${i+1} .text-cont`)
+    let j = 0;
+    for (let id of Top_movieData.results[i].genre_ids){
+      if (j>=2){
+        break;
+      }
+      currB.insertAdjacentHTML("beforeend",
+        `<button>${genreMap[id]}</button>`
+      )
+      j++;
+    }
     i++;
   };
 
@@ -166,13 +183,13 @@ searchbar.addEventListener("input", (event) => {
             day: "numeric"
           });
           resDiv.insertAdjacentHTML("beforeend", 
-            `<div class="entry-card">
+            `<a href="movie.html?id=${json.results[i].id}" target="_blank"><div class="entry-card">
               <div><img src="${poster_url}"></div>
               <div class="text-cont">
                 <p><strong>${json.results[i].title}</strong></p>
                 <p>${formatted_date}</p>
               </div>
-            </div`
+            </div></a>`
           );
           count+=1;
         }
@@ -201,6 +218,59 @@ document.querySelectorAll(".genre-filter").forEach(btn =>
 function changeActive() {
   document.querySelector(".active").classList.remove("active");
   this.classList.add("active");
+  genreBox.innerHTML = "";
+  if(this.innerText == "All"){
+    fetch(`${Tmdb_URL}discover/movie?api_key=${Tmdb_apiKey}&query=&sort_by=vote_average.desc&vote_count.gte=600&with_original_language=en`)
+    .then(res => res.json())
+    .then(json => {
+      console.log(json.results)
+      for(let data of json.results){
+        genreBox.insertAdjacentHTML("beforeend", 
+          `<div class="slide">
+            <div class="img-cont" style="background-image: url('https://image.tmdb.org/t/p/w500${data.poster_path}')">
+            </div>
+            <div class="text-cont">
+              <p class="mov-name">${data.title}</p>
+            </div>
+          </div>` 
+        );
+      }
+    });
+  }
+  else if(this.innerText == "Sci-Fi"){
+    fetch(`${Tmdb_URL}discover/movie?api_key=${Tmdb_apiKey}&sort_by=popularity.desc&with_genres=${Object.keys(genreMap).find(key => genreMap[key] === "Science Fiction")}&vote_count.gte=200`)
+    .then(res => res.json())
+    .then(json => {console.log(json.results)
+      for(let data of json.results){
+        genreBox.insertAdjacentHTML("beforeend", 
+          `<div class="slide">
+            <div class="img-cont" style="background-image: url('https://image.tmdb.org/t/p/w500${data.poster_path}')">
+            </div>
+            <div class="text-cont">
+              <p class="mov-name">${data.title}</p>
+            </div>
+          </div>` 
+        );
+      }
+    });
+  }
+  else{
+    fetch(`${Tmdb_URL}discover/movie?api_key=${Tmdb_apiKey}&sort_by=popularity.desc&with_genres=${Object.keys(genreMap).find(key => genreMap[key] === this.innerText)}&vote_count.gte=200`)
+    .then(res => res.json())
+    .then(json => {console.log(json.results)
+      for(let data of json.results){
+        genreBox.insertAdjacentHTML("beforeend", 
+          `<div class="slide">
+            <div class="img-cont" style="background-image: url('https://image.tmdb.org/t/p/w500${data.poster_path}')">
+            </div>
+            <div class="text-cont">
+              <p class="mov-name">${data.title}</p>
+            </div>
+          </div>` 
+        );
+      }
+    });
+  }
 }
 
 // const moveSpotlight = (index) => {
@@ -257,3 +327,15 @@ const moveSpotlight =  function() {
     });
   }
 }();
+
+document.querySelector(".active").click();
+
+// fetch(`${Tmdb_URL}genre/movie/list?api_key=${Tmdb_apiKey}&language=en'`)
+// .then(res => res.json())
+// .then(json => {
+//   console.log(json.genres);
+// });
+
+// fetch(`${Tmdb_URL}discover/movie?api_key=${Tmdb_apiKey}&sort_by=popularity.desc&with_genres=28&vote_count.gte=200`)
+// .then(res => res.json())
+// .then(json => {console.log(json)});
