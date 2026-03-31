@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MovieDB | Movie Details</title>
+        <link rel="stylesheet" href="assets/template-styles.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+        <script defer src="assets/template-scripts.js"></script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <a class="logo-title" href="index.html">
+                <i class="bx bx-film"></i>
+                <h1 class="title">MovieDB</h1>
+            </a>
+            <a class="back-line" href="index.html">
+                <i class="bx bx-arrow-back"></i>
+                Back
+            </a>
+        </nav>
+        <main class="movie-page">
+            <section class="hero" id="hero">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <img class="poster" id="poster" alt="Movie poster">
+                    <div class="info">
+                        <p class="status" id="status">Loading</p>
+                        <h2 class="mov-title" id="mov-title">--</h2>
+
+                        <div class="meta-row">
+                            <span><i class="bx bx-calendar"></i></span><span id="release-date">---</span>
+                            <span><i class="bx bx-time-five"></i></span><span id="runtime">---</span>
+                            <span><i class="bx bxs-star"></i></span><span id="rating">---</span>
+                        </div>
+                        <div class="chips" id="genre-chips"></div>
+                        <p class="overview" id="overview">
+                            Movie overview will appear here.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="details-card">
+                <h3>More Info</h3>
+                <div class="details-grid">
+                    <div><span>Original Title</span><p id="original-title">--</p></div>
+                    <div><span>Language</span><p id="language">--</p></div>
+                    <div><span>Status</span><p id="movie-status">--</p></div>
+                    <div><span>Budget</span><p id="budget">--</p></div>
+                    <div><span>Revenue</span><p id="revenue">--</p></div>
+                    <div><span>Popularity</span><p id="popularity">--</p></div>
+                </div>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <div class="footer-inner">
+              <div class="footer-brand">
+                <i class="bx bx-film"></i>
+                <span>MovieDB</span>
+              </div>
+              <p class="footer-copy">Built with TMDB & OMDB API • For learning/demo purpose</p>
+            </div>
+          </footer>
+    </body>
+</html>
