@@ -2,6 +2,7 @@ html,*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 :root{
@@ -266,15 +267,28 @@ body{
     padding: 48px 16px 0 16px;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+.slide .text-cont button{
+    border: 1px solid var(--border-color);
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.06));
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 6px 10px;
+    border-radius: 999px;
+    cursor: default;
+    transition: background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+    margin: 8px 8px 0 0;
+    white-space: nowrap;
+}
+
 .mov-slider::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .mov-slider {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .top-rated{
@@ -319,7 +333,7 @@ body{
     background: transparent;
     color: #cfcfda;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1;
     padding: 10px 14px;
     transition: all 0.2s ease;
@@ -340,7 +354,8 @@ body{
 .genre-filter.active{
     color: #111;
     background: var(--title-color);
-    font-weight: 700;
+    font-weight: 600;
+    box-shadow: 0 0 0 0,5px var(--title-color);
 }
 
 @media(max-width: 768px){
@@ -386,6 +401,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    min-height: 480px;
     
 }
 
@@ -394,6 +410,7 @@ body{
     height: 405px;
     border-radius: 10px;
     margin: 8px 52px;
+    cursor: pointer;
 }
 
 /* Keep carousel logic same, improve text proportion only */
